@@ -645,9 +645,10 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
             $this->validator->with($attributes)->passesOrFail(ValidatorInterface::RULE_CREATE);
         }
 
-        event(new RepositoryEntityCreating($this, $attributes));
-
         $model = $this->model->newInstance($attributes);
+
+        event(new RepositoryEntityCreating($this, $model));
+
         $model->save();
         $this->resetModel();
 
@@ -729,9 +730,9 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
 
         $this->skipPresenter(true);
 
-        event(new RepositoryEntityCreating($this, $attributes));
-
         $model = $this->model->updateOrCreate($attributes, $values);
+
+        event(new RepositoryEntityCreating($this, $model));
 
         $this->skipPresenter($temporarySkipPresenter);
         $this->resetModel();
