@@ -695,9 +695,10 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
 
         $model = $this->model->findOrFail($id);
 
+        $model->fill($attributes);
+
         event(new RepositoryEntityUpdating($this, $model));
 
-        $model->fill($attributes);
         $model->save();
 
         $this->skipPresenter($temporarySkipPresenter);
