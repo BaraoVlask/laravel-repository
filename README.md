@@ -399,7 +399,7 @@ $posts = $this->repository->findWhere([
     ['columnName4','IN',['value1','value2']], //whereIn
     ['columnName5','NOTIN',['value1','value2']], //whereNotIn
     ['columnName6','EXIST',''], //whereExists
-    
+
     //HAS, HASMORPH, DOESNTHAVE, DOESNTHAVEMORPH
     ['columnName7','HAS',function($query){}], //whereHas
 
@@ -844,9 +844,13 @@ Result will have something like this
    ]
 ```
 
-Add relationship
+Add a relationship
 
 `http://prettus.local/users?with=groups`
+
+Add many relationships
+
+`http://prettus.local/users?with=groups;teams`
 
 Between filter
 
