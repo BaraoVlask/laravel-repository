@@ -112,8 +112,6 @@ class RepositoryCommand extends Command
             $this->info("Repository created successfully.");
         } catch (FileAlreadyExistsException $e) {
             $this->error($this->type . ' already exists!');
-
-            return false;
         }
     }
 
