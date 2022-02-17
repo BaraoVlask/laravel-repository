@@ -11,5 +11,4 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface $CLASS$Repository extends RepositoryInterface
 {
-    //
 }
