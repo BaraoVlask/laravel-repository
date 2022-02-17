@@ -2,8 +2,10 @@
 
 $NAMESPACE$
 
-use Prettus\Repository\Eloquent\BaseRepository;
+use App\Interfaces\UserRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Exceptions\RepositoryException;
 use $REPOSITORY$
 use $MODEL$;
 $USE_VALIDATOR$
@@ -20,19 +22,18 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
      *
      * @return string
      */
-    public function model()
+    public function model(): string
     {
         return $CLASS$::class;
     }
-
     $VALIDATOR$
-
     /**
      * Boot up the repository, pushing criteria
+     *
+     * @throws RepositoryException
      */
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }
